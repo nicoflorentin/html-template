@@ -5,6 +5,7 @@ import {
 	coldarkCold,
 	Column,
 	Container,
+	Font,
 	Head,
 	Hr,
 	Html,
@@ -20,6 +21,9 @@ import {
 import { ResponsiveColumn, ResponsiveRow } from "@responsive-email/react-email"
 
 const baseUrl = process.env.NODE_ENV === "development" ? "" : "."
+const assetsFolderName = process.env.NODE_ENV === "development" ? "static" : "images"
+
+console.log(process.env)
 
 const MOBILE_WIDTH = 480
 const DESKTOP_WIDTH = 680
@@ -28,6 +32,9 @@ const Test = () => {
 	return (
 		<Html>
 			<Head>
+				<link rel='preconnect' href='https://fonts.googleapis.com' />
+				<link rel='preconnect' href='https://fonts.gstatic.com' />
+				<link href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap' rel='stylesheet' />
 				<style>
 					{`
             @media only screen and (max-width: 619px) {
@@ -50,31 +57,49 @@ const Test = () => {
               }
             }
           `}
+					{/*  */}
 				</style>
+				<Font
+					fontFamily='Montserrat'
+					fallbackFontFamily='sans-serif'
+					// webFont={{
+					// 	url: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap",
+					// 	format: "woff2",
+					// }}
+					fontWeight={400}
+					fontStyle='normal'
+				/>
 			</Head>
 			<Body style={{ margin: "0" }}>
 				<Container style={styles.container}>
 					<Section style={{ position: "relative" }}>
-						<Img src={`${baseUrl}/static/logo-laroche.png`} width='200' style={styles.logoMain} alt='Plaid' />
+						<Img
+							src={`${baseUrl}/${assetsFolderName}/logo-laroche.png`}
+							width='200'
+							style={styles.logoMain}
+							alt='Plaid'
+						/>
 					</Section>
 					<Text style={styles.firmeza}>¿Perdiste la firmeza en la piel?</Text>
-					<Img src={`${baseUrl}/static/hyalu.png`} style={{ width: "100%" }} alt='Plaid'></Img>
+					<Img src={`${baseUrl}/${assetsFolderName}/hyalu.png`} style={{ width: "100%" }} alt='Plaid'></Img>
 					<Section style={styles.porqueContainer}>
 						<Text className='mobile-text' style={styles.porque1}>
 							POR QUÉ ES FUNDAMENTAL TENER
 						</Text>
-						<Text className='mobile-text' style={styles.porque2}>LA PIEL HIDRATADA EN VERANO?</Text>
+						<Text className='mobile-text' style={styles.porque2}>
+							LA PIEL HIDRATADA EN VERANO?
+						</Text>
 					</Section>
 					<Section style={styles.headerContainer}>
 						<Img
 							className='desktop-img'
-							src={`${baseUrl}/static/arrugas.png`}
+							src={`${baseUrl}/${assetsFolderName}/arrugas.png`}
 							style={{ width: "100%" }}
 							alt='Plaid'
 						></Img>
 						<Img
 							className='mobile-img'
-							src={`${baseUrl}/static/arrugas-mobile.png`}
+							src={`${baseUrl}/${assetsFolderName}/arrugas-mobile.png`}
 							style={{ width: "100%" }}
 							alt='Plaid'
 						></Img>
@@ -84,46 +109,78 @@ const Test = () => {
 						<Text style={styles.xText}>XXXXXXXXXXXXXXXX</Text>
 						<Text style={styles.xTextBold}>XX XX XXXXX"</Text>
 						<Section style={styles.draTextContainer}>
-							<Text style={styles.xText}>M.N (COMPLETAR)</Text>
 							<Text style={styles.xTextBold}>DRA. VALERIA VILLORDO</Text>
+							<Text style={styles.xText}>M.N (COMPLETAR)</Text>
 						</Section>
+						<Button style={styles.button1}>QUIERO CONOCER MÁS</Button>
 					</Section>
-					<Button style={styles.button1}>QUIERO CONOCER MÁS</Button>
 					<ResponsiveRow>
 						<ResponsiveColumn style={styles.column} span={1}>
-							<Img width={"100%"} src={`${baseUrl}/static/botellita.png`} alt='Plaid' />
+							<Img
+								className='image-resize'
+								width={"100%"}
+								src={`${baseUrl}/${assetsFolderName}/botellita.png`}
+								alt='Plaid'
+							/>
 						</ResponsiveColumn>
 						<ResponsiveColumn style={styles.column} span={1}>
-							<Img width={"100%"} src={`${baseUrl}/static/beneficios.png`} alt='Plaid' />
+							<Img
+								className='image-resize'
+								width={"100%"}
+								src={`${baseUrl}/${assetsFolderName}/beneficios.png`}
+								alt='Plaid'
+							/>
 						</ResponsiveColumn>
 					</ResponsiveRow>
 					<Button style={styles.button2}>SUMÁ HYALU B5 SERUM A TU RUTINA</Button>
 					<Section>
-						<Text style={styles.firmeza}>FORMULA SUPERIOR</Text>
+						<Text style={styles.firmeza}>FÓRMULA SUPERIOR</Text>
 					</Section>
-					<Img style={{ width: "100%" }} src={`${baseUrl}/static/formula.png`} alt='Plaid' />
+					<Img style={{ width: "100%" }} src={`${baseUrl}/${assetsFolderName}/formula.png`} alt='Plaid' />
 					<Button style={styles.button3}>COMPRAR</Button>
 					<Section style={styles.footer}>
 						<Row>
 							<Column align='center'>
-								<Img width='100' style={styles.logo} src={`${baseUrl}/static/black-logo.webp`} alt='Plaid' />
+								<Img
+									width='200'
+									style={styles.logo}
+									src={`${baseUrl}/${assetsFolderName}/black-logo.webp`}
+									alt='Plaid'
+								/>
 							</Column>
 							<Column align='right'>
 								<Row>
 									<Column align='right'>
-										<Text style={styles.seguinos}>Seguinos en</Text>
+										<Text style={styles.seguinos}>SEGUINOS EN</Text>
 									</Column>
 									<Column>
-										<Img width='20' src={`${baseUrl}/static/instagram-white.png`} alt='Plaid'></Img>
+										<Img
+											width='20'
+											src={`${baseUrl}/${assetsFolderName}/facebook-white.png`}
+											alt='Plaid'
+										></Img>
 									</Column>
 									<Column>
-										<Img width='20' src={`${baseUrl}/static/youtube-white.png`} alt='Plaid'></Img>
+										<Img
+											width='20'
+											src={`${baseUrl}/${assetsFolderName}/instagram-white.png`}
+											alt='Plaid'
+										></Img>
 									</Column>
 									<Column>
-										<Img width='20' src={`${baseUrl}/static/facebook-white.png`} alt='Plaid'></Img>
+										<Img
+											width='25'
+											src={`${baseUrl}/${assetsFolderName}/youtube-white.png`}
+											alt='Plaid'
+										></Img>
 									</Column>
+
 									<Column>
-										<Img width='20' src={`${baseUrl}/static/whatsapp-white.png`} alt='Plaid'></Img>
+										<Img
+											width='20'
+											src={`${baseUrl}/${assetsFolderName}/whatsapp-white.png`}
+											alt='Plaid'
+										></Img>
 									</Column>
 								</Row>
 							</Column>
@@ -160,12 +217,13 @@ const styles = {
 		margin: "0 auto 20px auto",
 	},
 	firmeza: {
-		backgroundColor: "rgb(49, 152, 236)",
+		backgroundColor: "#00A0E6",
 		color: "white",
 		fontSize: "25px",
 		margin: "0",
 		padding: "8px 0",
 		textAlign: "center" as const,
+		fontWeight: 100,
 	},
 	porqueContainer: {
 		margin: "20px 0",
@@ -176,7 +234,7 @@ const styles = {
 	},
 	porque2: {
 		fontSize: "30px",
-		fontWeight: "bold",
+		fontWeight: "800",
 		margin: "10px 0",
 		color: "rgb(42, 154, 214)",
 	},
@@ -186,14 +244,14 @@ const styles = {
 	},
 	xTextContainer: {
 		textAlign: "center" as const,
-		margin: "10px 0",
+		margin: "50px 0",
 	},
 	xText: {
-		fontSize: "20px",
+		fontSize: "30px",
 		margin: "0",
 	},
 	xTextBold: {
-		fontSize: "20px",
+		fontSize: "30px",
 		fontWeight: "bold",
 		margin: "0",
 	},
@@ -202,32 +260,35 @@ const styles = {
 	},
 	button1: {
 		backgroundColor: "black",
-		width: "200px",
+		fontSize: "20px",
+		width: "250px",
 		display: "block",
-		margin: "30px auto",
+		margin: "10px auto",
 		color: "white",
-		padding: "10px 0",
-		fontWeigth: "bold",
+		padding: "10px 20px",
+		fontWeight: "bolder",
 		textAlign: "center" as const,
 	},
 	button2: {
 		backgroundColor: "black",
 		width: "400px",
+		fontSize: "20px",
 		display: "block",
 		margin: "30px auto",
 		color: "white",
 		padding: "10px 0",
-		fontWeigth: "bold",
+		fontWeight: "bolder",
 		textAlign: "center" as const,
 	},
 	button3: {
 		backgroundColor: "black",
 		width: "150px",
+		fontSize: "20px",
 		display: "block",
 		margin: "20px auto",
 		color: "white",
 		padding: "10px 0",
-		fontWeigth: "bold",
+		fontWeight: "bolder",
 		textAlign: "center" as const,
 	},
 	column: {
@@ -236,16 +297,18 @@ const styles = {
 		maxWidth: "302.5px",
 	},
 	seguinos: {
+		fontSize: "10px",
 		color: "white",
 		margin: "0 20px",
 	},
 	footer: {
 		backgroundColor: "black",
-		padding: "20px 0",
+		padding: "20px 20px",
 	},
 	endInfo: {
 		fontSize: "10px",
 		lineHeight: "15px",
+		padding: "10px 30px",
 	},
 }
 
