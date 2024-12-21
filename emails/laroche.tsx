@@ -20,7 +20,7 @@ import {
 
 import { ResponsiveColumn, ResponsiveRow } from "@responsive-email/react-email"
 
-const baseUrl = process.env.NODE_ENV === "development" ? "" : "."
+const baseUrl = process.env.NODE_ENV === "development" ? "/" : ""
 const assetsFolderName = process.env.NODE_ENV === "development" ? "static" : "images"
 
 console.log(process.env)
@@ -31,6 +31,7 @@ const DESKTOP_WIDTH = 680
 const Test = () => {
 	return (
 		<Html>
+			<Preview>Prueba de Preview</Preview>;
 			<Head>
 				<link rel='preconnect' href='https://fonts.googleapis.com' />
 				<link rel='preconnect' href='https://fonts.gstatic.com' />
@@ -73,15 +74,17 @@ const Test = () => {
 			<Body style={{ margin: "0" }}>
 				<Container style={styles.container}>
 					<Section style={{ position: "relative" }}>
-						<Img
-							src={`${baseUrl}/${assetsFolderName}/logo-laroche.png`}
-							width='200'
-							style={styles.logoMain}
-							alt='Plaid'
-						/>
+						<Link href="https://google.com">
+							<Img
+								src={`${baseUrl}${assetsFolderName}/logo-laroche.png`}
+								width='200'
+								style={styles.logoMain}
+								alt='Plaid'
+							/>
+						</Link>
 					</Section>
 					<Text style={styles.firmeza}>¿Perdiste la firmeza en la piel?</Text>
-					<Img src={`${baseUrl}/${assetsFolderName}/hyalu.png`} style={{ width: "100%" }} alt='Plaid'></Img>
+					<Img src={`${baseUrl}${assetsFolderName}/hyalu.png`} style={{ width: "100%" }} alt='Plaid'></Img>
 					<Section style={styles.porqueContainer}>
 						<Text className='mobile-text' style={styles.porque1}>
 							POR QUÉ ES FUNDAMENTAL TENER
@@ -93,13 +96,13 @@ const Test = () => {
 					<Section style={styles.headerContainer}>
 						<Img
 							className='desktop-img'
-							src={`${baseUrl}/${assetsFolderName}/arrugas.png`}
+							src={`${baseUrl}${assetsFolderName}/arrugas.png`}
 							style={{ width: "100%" }}
 							alt='Plaid'
 						></Img>
 						<Img
 							className='mobile-img'
-							src={`${baseUrl}/${assetsFolderName}/arrugas-mobile.png`}
+							src={`${baseUrl}${assetsFolderName}/arrugas-mobile.png`}
 							style={{ width: "100%" }}
 							alt='Plaid'
 						></Img>
@@ -119,7 +122,7 @@ const Test = () => {
 							<Img
 								className='image-resize'
 								width={"100%"}
-								src={`${baseUrl}/${assetsFolderName}/botellita.png`}
+								src={`${baseUrl}${assetsFolderName}/botellita.png`}
 								alt='Plaid'
 							/>
 						</ResponsiveColumn>
@@ -127,7 +130,7 @@ const Test = () => {
 							<Img
 								className='image-resize'
 								width={"100%"}
-								src={`${baseUrl}/${assetsFolderName}/beneficios.png`}
+								src={`${baseUrl}${assetsFolderName}/beneficios.png`}
 								alt='Plaid'
 							/>
 						</ResponsiveColumn>
@@ -136,7 +139,7 @@ const Test = () => {
 					<Section>
 						<Text style={styles.firmeza}>FÓRMULA SUPERIOR</Text>
 					</Section>
-					<Img style={{ width: "100%" }} src={`${baseUrl}/${assetsFolderName}/formula.png`} alt='Plaid' />
+					<Img style={{ width: "100%" }} src={`${baseUrl}${assetsFolderName}/formula.png`} alt='Plaid' />
 					<Button style={styles.button3}>COMPRAR</Button>
 					<Section style={styles.footer}>
 						<Row>
@@ -144,7 +147,7 @@ const Test = () => {
 								<Img
 									width='200'
 									style={styles.logo}
-									src={`${baseUrl}/${assetsFolderName}/black-logo.webp`}
+									src={`${baseUrl}${assetsFolderName}/black-logo.webp`}
 									alt='Plaid'
 								/>
 							</Column>
@@ -156,21 +159,21 @@ const Test = () => {
 									<Column>
 										<Img
 											width='20'
-											src={`${baseUrl}/${assetsFolderName}/facebook-white.png`}
+											src={`${baseUrl}${assetsFolderName}/facebook-white.png`}
 											alt='Plaid'
 										></Img>
 									</Column>
 									<Column>
 										<Img
 											width='20'
-											src={`${baseUrl}/${assetsFolderName}/instagram-white.png`}
+											src={`${baseUrl}${assetsFolderName}/instagram-white.png`}
 											alt='Plaid'
 										></Img>
 									</Column>
 									<Column>
 										<Img
 											width='25'
-											src={`${baseUrl}/${assetsFolderName}/youtube-white.png`}
+											src={`${baseUrl}${assetsFolderName}/youtube-white.png`}
 											alt='Plaid'
 										></Img>
 									</Column>
@@ -178,7 +181,7 @@ const Test = () => {
 									<Column>
 										<Img
 											width='20'
-											src={`${baseUrl}/${assetsFolderName}/whatsapp-white.png`}
+											src={`${baseUrl}${assetsFolderName}/whatsapp-white.png`}
 											alt='Plaid'
 										></Img>
 									</Column>
@@ -202,7 +205,7 @@ const Test = () => {
 	)
 }
 
-const styles = {
+const styles: Record<string, React.CSSProperties> = {
 	container: {
 		margin: "0 auto",
 		// padding: "0",
